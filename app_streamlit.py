@@ -7,6 +7,9 @@ load_dotenv(Path(__file__).resolve().parent / ".env")
 import streamlit as st
 
 from src.application.agent import create_agent, invoke_agent
+from src.application.mcp_client import init_mcp_client
+
+init_mcp_client()
 
 st.set_page_config(page_title="Busca de Veículos", layout="centered")
 

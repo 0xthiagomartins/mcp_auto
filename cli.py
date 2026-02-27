@@ -10,11 +10,13 @@ load_dotenv(Path(__file__).resolve().parent / ".env")
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from src.application.agent import create_agent, invoke_agent
+from src.application.mcp_client import init_mcp_client
 
 
 def main():
     print("Agente de busca de veículos (MCP)")
     print("Digite sua mensagem e Enter. 'sair' ou Ctrl+D para encerrar.\n")
+    init_mcp_client()
     agent = create_agent()
     history = []
     while True:
