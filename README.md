@@ -1,5 +1,20 @@
 # mcp_auto – Busca de Veículos (Desafio C2S)
 
+## Arquitetura (visão geral)
+
+```mermaid
+flowchart LR
+    U[Você] --> UI[Interface\nStreamlit ou CLI]
+    UI --> AG[Agente\nentende e pergunta]
+    AG --> CLIENT[Cliente MCP]
+    CLIENT --> SERVER[Servidor MCP]
+    SERVER --> DB[(Banco\nde veículos)]
+```
+
+A resposta volta pelo mesmo caminho: banco → servidor → cliente → agente → interface → você.
+
+---
+
 - **Modelagem**: `src/domain/models.py` (SQLModel, 11 atributos).
 - **Seed**: `python scripts/seed_vehicles.py` (100+ veículos, Faker).
 - **MCP**: Servidor FastMCP em `src/infrastructure/mcp_server.py` (tool `search_vehicles`). Cliente em `src/application/mcp_client.py`. Fluxo Client → Server → DB.
